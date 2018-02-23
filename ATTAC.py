@@ -26,6 +26,31 @@ C     /    \\    A
         B
 '''
 
+def pythagoras():
+    # Find Sides with a^2 + b^2 = c^2 rule
+    if sideA == None and sideB != None and sideC != None:
+        sideA = m.sqrt(sideC**2 - sideB**2)
+    if sideB == None and sideA != None and sideC != None:
+        sideB = m.sqrt(sideC**2 - sideA**2)
+    if sideC == None and sideA != None and sideB != None:
+       sideC = m.sqrt(sideB**2 + sideA**2)
+
+def angle180():
+    # Find angles with 180 rule
+    if angleX == None and angleY != None and angleZ != None:
+        angleX = 180 - (angleY + angleZ)
+    if angleY == None and angleX != None and angleZ != None :
+        angleY = 180 - (angleX + angleZ)
+    if angleZ == None and angleY != None and angleX != None:
+        angleZ = 180 - (angleY + angleX)
+
+def sohcahtoaAngles():
+    if sideC != None
+
+def sohcahtoaSides():
+    #Find sides with sohcahtoa
+    
+
 print('First, is your triangle right angled? Y/N')
 
 rightAngle = input('> ').lower()
@@ -50,13 +75,7 @@ if rightAngle == 'y':
         sideC = None
         pass
     
-    # Find Sides with a^2 + b^2 = c^2 rule
-    if sideA == None and sideB != None and sideC != None:
-        sideA = m.sqrt(sideC**2 - sideB**2)
-    if sideB == None and sideA != None and sideC != None:
-        sideB = m.sqrt(sideC**2 - sideA**2)
-    if sideC == None and sideA != None and sideB != None:
-       sideC = m.sqrt(sideB**2 + sideA**2)
+    pythagoras()
 
     print('\nValues so far:')
     print('Side A: ' + str(sideA))
@@ -74,14 +93,11 @@ if rightAngle == 'y':
     except ValueError:
         angleZ = None
         pass
+    
+    angles180()
 
-    # Find angles with 180 rule
-    if angleX == None and angleY != None and angleZ != None:
-        angleX = 180 - (angleY + angleZ)
-    if angleZ == None and angleY != None and angleX != None:
-        angleZ = 180 - (angleY + angleX)
-    if angleY == None:
-        print('Something is very wrong, panic')
+
+
 
 if rightAngle == 'n':
     print(leftAngleAscii)
