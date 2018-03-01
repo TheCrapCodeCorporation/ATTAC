@@ -26,23 +26,24 @@ C     /    \\    A
         B
 '''
 
+# Lists used to store discoved values
 angleList = []
 sideList = []
 
+# Declaring variables to avoid UnboundLocalError
 sideA = None
 sideB = None
 sideC = None
-
 angleX = None
 angleY = None
 angleZ = None
 
-
+# Use to find Sides with a^2 + b^2 = c^2 rule
 def pythagoras():
 	global sideA
 	global sideB
 	global sideC
-	# Find Sides with a^2 + b^2 = c^2 rule
+
 	try:
 		if sideA == None and sideB != None and sideC != None:
 			sideA = m.sqrt(sideC ** 2 - sideB ** 2)
@@ -64,12 +65,11 @@ def pythagoras():
 	except UnboundLocalError:
 		pass
 
-
+# Find angles with 180 rule
 def angles180():
 	global angleX
 	global angleY
 	global angleZ
-	# Find angles with 180 rule
 
 	try:
 		if 'x' not in angleList and 'y' in angleList and 'z' in angleList:
@@ -91,8 +91,8 @@ def angles180():
 			angleList.append('z')
 	except UnboundLocalError: pass
 
-print('First, is your triangle right angled? Y/N')
 
+print('First, is your triangle right angled? Y/N')
 rightAngle = input('> ').lower()
 
 if rightAngle == 'y':
@@ -101,8 +101,9 @@ if rightAngle == 'y':
 	angleList.append('y')
 
 	print('Please input the sides you have')
-	print('If you dont have that side, input a non-number and it will skip')
+	print('If you dont have that side, just press enter or input a non-number and it will skip')
 
+	# Get sides the user already has
 	try:
 		sideA = float(input('Side A: '))
 		sideList.append('a')
@@ -130,8 +131,9 @@ if rightAngle == 'y':
 	print('Side C: ' + str(sideC))
 
 	print('Please input the angles')
-	print('If you dont have that side, input a non-number and it will skip')
+	print('If you dont have that side, just press enter or input a non-number and it will skip')
 
+	# Get angles the user already has
 	try:
 		angleX = float(input('Angle X: '))
 		angleList.append('x')
@@ -148,10 +150,20 @@ if rightAngle == 'y':
 	angles180()
 	pythagoras()
 
+	print('\nValues so far:')
+	print('Side A: ' + str(sideA))
+	print('Side B: ' + str(sideB))
+	print('Side C: ' + str(sideC))
+	print('Angle X: ' + str(angleX))
+	print('Angle Y: ' + str(angleY))
+	print('Angle Z: ' + str(angleZ))
+
+	# Calculate angles using sohcahtoa
 	if len(sideList) == 3:
 		angleX = m.asin(m.radians(sideA / sideC))
 		angleZ = m.asin(m.radians(sideB / sideC))
 
+	# Calculate sides using sohcahtoa
 	if len(angleList) == 3:
 		if 'a' in sideList:
 			if sideB not in sideList:
@@ -175,12 +187,15 @@ if rightAngle == 'y':
 				sideB = sideC * m.cos(m.radians(angleX))
 				sideList.append(sideB)
 
+
+if rightAngle == 'n':
+	print(leftAngleAscii)
+
+# Print final value calculations
+print('\nFinal Values:')
 print('Side A: ' + str(sideA))
 print('Side B: ' + str(sideB))
 print('Side C: ' + str(sideC))
 print('Angle X: ' + str(angleX))
 print('Angle Y: ' + str(angleY))
 print('Angle Z: ' + str(angleZ))
-
-if rightAngle == 'n':
-	print(leftAngleAscii)
