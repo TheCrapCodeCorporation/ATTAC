@@ -37,6 +37,7 @@ sideC = None
 angleX = None
 angleY = None
 angleZ = None
+area = None
 
 # Use to find Sides with a^2 + b^2 = c^2 rule
 def pythagoras():
@@ -162,31 +163,33 @@ if rightAngle == 'y':
 	if len(sideList) == 3:
 		angleX = m.asin(m.radians(sideA / sideC))
 		angleZ = m.asin(m.radians(sideB / sideC))
-
+		angleList.append('x', 'z')
 	# Calculate sides using sohcahtoa
 	if len(angleList) == 3:
 		if 'a' in sideList:
 			if sideB not in sideList:
 				sideB = sideA / m.tan(m.radians(angleX))
-				sideList.append(sideB)
+				sideList.append('b')
 			if sideC not in sideList:
 				sideC = sideA / m.sin(m.radians(angleX))
-				sideList.append(sideC)
+				sideList.append('c')
 		if 'b' in sideList:
 			if sideA not in sideList:
 				sideA = sideB * m.tan(m.radians(angleX))
-				sideList.append(sideA)
+				sideList.append('a')
 			if sideC not in sideList:
 				sideC = sideB / m.cos(m.radians(angleX))
-				sideList.append(sideC)
+				sideList.append('c')
 		if 'c' in sideList:
 			if sideA not in sideList:
 				sideA = sideC * m.sin(m.radians(angleX))
-				sideList.append(sideA)
+				sideList.append('a')
 			if sideB not in sideList:
 				sideB = sideC * m.cos(m.radians(angleX))
-				sideList.append(sideB)
+				sideList.append('b')
 
+	if 'a' in sideList and 'b' in sideList:
+		area = (sideA * sideB) / 2
 
 if rightAngle == 'n':
 	print(leftAngleAscii)
@@ -199,3 +202,4 @@ print('Side C: ' + str(sideC))
 print('Angle X: ' + str(angleX))
 print('Angle Y: ' + str(angleY))
 print('Angle Z: ' + str(angleZ))
+print('Area: ' + str(area))
