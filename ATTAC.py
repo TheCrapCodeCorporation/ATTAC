@@ -1,5 +1,8 @@
 import math as m
 
+#-- Variable Declearation --#
+
+#Ascii reference pictures
 rightAngleAscii = '''
             z
           /|
@@ -39,6 +42,8 @@ angleY = None
 angleZ = None
 area = None
 
+#-- Define Functions --#
+
 # Use to find Sides with a^2 + b^2 = c^2 rule
 def pythagoras():
 	global sideA
@@ -47,8 +52,8 @@ def pythagoras():
 
 	try:
 		if sideA == None and sideB != None and sideC != None:
-			sideA = m.sqrt(sideC ** 2 - sideB ** 2)
-			sideList.append('a')
+                        sideA = m.sqrt(sideC ** 2 - sideB ** 2)
+		        sideList.append('a')
 	except UnboundLocalError:
 		pass
 
@@ -93,18 +98,27 @@ def angles180():
 	except UnboundLocalError: pass
 
 
+#-- Main Code --#
+
+
+#Ask if right angle
 print('First, is your triangle right angled? Y/N')
 rightAngle = input('> ').lower()
 
+#All code within this if is to calculate all sides for right angle triangles
 if rightAngle == 'y':
+        #Set angleY to 90 and add a reference string to the list
 	angleY = 90
-	print(rightAngleAscii)
 	angleList.append('y')
 
-	print('Please input the sides you have')
+        #print a reference ascii art
+	print(rightAngleAscii)
+	
+        print('Please input the sides you have')
 	print('If you dont have that side, just press enter or input a non-number and it will skip')
 
-	# Get sides the user already has
+	# Get sides the user already has and add a static string note to list, 
+        # set to None and skip if it cant be converted to a float to avoid non number inputs
 	try:
 		sideA = float(input('Side A: '))
 		sideList.append('a')
@@ -124,8 +138,10 @@ if rightAngle == 'y':
 		sideC = None
 		pass
 
+        # Use values found to find remaining sides if possible
 	pythagoras()
 
+        # Print Values so far, will print None if not found yet
 	print('\nValues so far:')
 	print('Side A: ' + str(sideA))
 	print('Side B: ' + str(sideB))
@@ -134,7 +150,9 @@ if rightAngle == 'y':
 	print('Please input the angles')
 	print('If you dont have that side, just press enter or input a non-number and it will skip')
 
-	# Get angles the user already has
+	# Get angles the user already has and add a static string note to list, 
+        # set to None and skip if it cant be converted to a float to avoid non number inputs
+
 	try:
 		angleX = float(input('Angle X: '))
 		angleList.append('x')
