@@ -215,10 +215,10 @@ if rightAngle == 'n':
 
 # Print final value calculations
 print('\nFinal Values:')
-print('Side A: ' + str(sideA))
-print('Side B: ' + str(sideB))
-print('Side C: ' + str(sideC))
-print('Angle X: ' + str(angleX))
-print('Angle Y: ' + str(angleY))
-print('Angle Z: ' + str(angleZ))
-print('Area: ' + str(area))
+print('Side A: ' + str(m.ceil(sideA)))
+print('Side B: ' + str(m.ceil(sideB)))
+print('Side C: ' + str(m.ceil(sideC)))
+print('Angle X: ' + str(m.ceil(angleX)))
+print('Angle Y: ' + str(m.ceil(angleY)))
+print('Angle Z: ' + str(m.ceil(angleZ)))
+print('Area: ' + str(m.ceil(area)))
