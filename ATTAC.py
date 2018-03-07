@@ -181,7 +181,8 @@ if rightAngle == 'y':
     if len(sideList) == 3:
         angleX = m.asin(m.radians(sideA / sideC))
         angleZ = m.asin(m.radians(sideB / sideC))
-        angleList.append('x', 'z')
+        angleList.append('x')
+        angleList.append('z')
     # Calculate sides using sohcahtoa
     if len(angleList) == 3:
         if 'a' in sideList:
